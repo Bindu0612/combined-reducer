@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './App.css';
 import * as actionCreator from "./actions";
+import logo from "./logo.svg";
 
 class App extends Component{
 
@@ -11,10 +12,9 @@ class App extends Component{
       <h2> state value - {this.props.a.num1} </h2>
       <div>
       <button onClick = {this.props.multipleOfFive} > click for *5 </button>
-       {this.props.a.num1} <hr/> 
-
+        <hr/> 
       <button onClick = {this.props.multipleOfTwo }> click for *2 </button>
-      {this.props.a.num1}
+      {this.props.loading && <img src={logo} className="App-logo" />}
       </div>
       </>
     )

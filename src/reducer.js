@@ -11,7 +11,7 @@ else if (action.type === 'MUL2'){
     number.loading = false;
 }
 
-else if (action.type === 'loading'){
+else if (action.type === 'LOADING'){
     number.loading = true;
 }
 return number;
