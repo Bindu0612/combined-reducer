@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './App.css';
+import * as actionCreator from "./actions";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+
+  render(){
+    return(
+      <>
+      <h2> state value - {this.props.a.num1} </h2>
+      <div>
+      <button onClick = {this.props.multipleOfFive} > click for *5 </button>
+       {this.props.a.num1} <hr/> 
+
+      <button onClick = {this.props.multipleOfTwo }> click for *2 </button>
+      {this.props.a.num1}
+      </div>
+      </>
+    )
+  }
 }
 
-export default App;
+function mapStateToProps(state){
+  return {
+    a:state,
+  loading: state.loading
+}
+}
+
+
+function mapDispatchToProps (dispatch){
+return{
+  multipleOfFive : () => dispatch (actionCreator.MUL5(1)),
+  multipleOfTwo : () => dispatch (actionCreator.MUL2(1)),
+}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (App);
